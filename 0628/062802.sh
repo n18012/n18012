@@ -5,5 +5,4 @@ if [ "$#" -eq 0 ]; then
 	exit 1
 fi
 
-echo $1
-find . -type f | du -b | sort -n | head -n 5 
+find -type f | xargs ls -l | du -b | sort -rn | head -n 5
