@@ -5,4 +5,12 @@ if [ "$#" -eq 0 ]; then
 	exit 1
 fi
 
-find -type f | xargs ls -l | du -b | sort -rn | head -n 5
+if [ -z "$directory" ]; then
+	directory='.'
+fi
+
+if [ -z "$name" ]; then
+	name='*'
+fi
+
+find "$1" -type f | xargs du -b | sort -n | tac | head -n 5
